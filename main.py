@@ -123,3 +123,5 @@ if abs(percent_change) >= 5.0:
     for article in news_data['articles'][:3]:
         msg = msg_formatter(article, percent_change)
         send_message(account_sid, auth_token, msg)
+
+        
