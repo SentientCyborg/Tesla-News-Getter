@@ -58,6 +58,7 @@ def send_message(account_id: str, acct_token: str, news_article: str = None):
 
 
 def msg_formatter(news: dict, price_change: float) -> str:
+    """Formats the text messages sent by Twilio"""
     if price_change > 0:
         arrow = "🔺"
     else:
@@ -90,7 +91,7 @@ def filter_stock_price(data: dict) -> list[float]:
 
 def percent_price_change(recent_prices: list[float]) -> float:
     """Converts prices to a Pandas series and determines the percent change between the days.
-    Results are rounded to five decimal places.
+    Results are rounded.
     """
     price_series = pd.Series(recent_prices)
     change = price_series.pct_change()[1]
@@ -100,7 +101,6 @@ def percent_price_change(recent_prices: list[float]) -> float:
 
 class RequestData:
     """A basic request class to return data from APIs"""
-
     def __init__(self, api_url: str, params: dict):
         self.api_url = api_url
         self.params = params
